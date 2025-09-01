@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+{% block title %}Оставить отзыв{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Оставьте ваш отзыв</h2>
+  {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+  {% endif %}
+  <form method="post" class="mx-auto" style="max-width: 600px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-dark mt-3">Отправить</button>
+  </form>
+</div>
+{% endblock %}

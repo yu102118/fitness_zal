@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}FitZone Klubu{% endblock %}</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'main/css/main.css' %}" />
+
+  {% block extra_css %}{% endblock %}
+
+  <style>
+    .navbar {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+  
+    .navbar.scrolled {
+      background: rgba(132, 122, 122, 0.9);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    }
+  
+    .navbar-brand {
+      font-weight: 900;
+      font-size: 1.5rem;
+      background: linear-gradient(90deg, #0d6efd, #6610f2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+    }
+  
+    .navbar-brand i {
+      margin-right: 8px;
+    }
+  
+    .nav-link {
+      position: relative;
+      font-weight: 600;
+      color: #000;
+      transition: color 0.3s ease;
+    }
+  
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: #0d6efd;
+      transition: width 0.3s ease;
+    }
+  
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  
+    .nav-link:hover {
+      color: #0d6efd;
+    }
+  
+    .nav-link.active {
+      color: #0d6efd !important;
+    }
+  
+    .btn-outline-primary, .btn-primary {
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+    }
+  
+    .btn-outline-primary {
+      border-color: #0d6efd;
+      color: #0d6efd;
+    }
+  
+    .btn-outline-primary:hover {
+      background-color: #0d6efd;
+      color: #fff;
+    }
+  
+    .navbar-toggler {
+      border: none;
+    }
+  
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+  
+    .navbar-nav .nav-item + .nav-item {
+      margin-left: 1rem;
+    }
+  </style>
+  
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <i class="fas fa-dumbbell"></i> FitZone
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Ana səhifə</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/services/' %}active{% endif %}" href="{% url 'services' %}">Xidmətlər</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/hall/' %}active{% endif %}" href="{% url 'hall' %}">Trenajor Zalı</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/contacts/' %}active{% endif %}" href="{% url 'contacts' %}">Əlaqə</a>
+          </li>
+  
+          {% if user.is_authenticated %}
+            <li class="nav-item ms-lg-3">
+              <form method="post" action="{% url 'logout' %}" class="d-flex align-items-center">
+                {% csrf_token %}
+                <button class="btn btn-outline-primary" type="submit" title="Çıxış">Çıxış <i class="bi bi-box-arrow-right"></i></button>
+              </form>
+            </li>
+          {% else %}
+            <li class="nav-item ms-lg-3">
+              
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+  <!-- Offset for fixed navbar -->
+  <div style="height: 70px;"></div>
+
+  <!-- Main Content -->
+  <main class="{% block main_class %}container my-5{% endblock %}">
+    {% block content %}{% endblock %}
+  </main>
+
+ 
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Navbar scroll effect -->
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

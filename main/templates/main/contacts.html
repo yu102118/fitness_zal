@@ -1,0 +1,113 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}FitZone Klubu — Əlaqə{% endblock %}
+
+{% block extra_css %}
+<style>
+  body {
+    background: url("{% static 'main/img/contact_bg.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    color: #f1f1f1;
+  }
+
+  .content-wrapper {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 70px 20px 100px;
+    min-height: 100vh;
+    border-radius: 30px;
+  }
+
+  h1, h2, p, label {
+    color: #f8f9fa;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form-control {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+  }
+
+  .form-control::placeholder {
+    color: #ddd;
+  }
+
+  .form-control:focus {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+    box-shadow: none;
+    border: none;
+  }
+
+  button.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+  }
+
+  button.btn-primary:hover {
+    background-color: #0b5ed7;
+  }
+
+  .contact-info {
+    max-width: 600px;
+    margin: 40px auto 0;
+    text-align: center;
+  }
+
+  .contact-info p {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 576px) {
+    .glass-card {
+      padding: 20px;
+      margin: 0 10px;
+    }
+  }
+  
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+  <h1 class="text-center mb-5 fw-bold">Bizimlə əlaqə</h1>
+
+  <div class="glass-card ">
+    <form method="post" action="#">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="id_name" class="form-label" >Adınız</label>
+        <input type="text" class="form-control" id="id_name" name="name" placeholder="Adınızı daxil edin" required>
+      </div>
+      <div class="mb-3">
+        <label for="id_email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="id_email" name="email" placeholder="Emailinizi daxil edin" required>
+      </div>
+      <div class="mb-3">
+        <label for="id_message" class="form-label">Mesajınız</label>
+        <textarea class="form-control" id="id_message" name="message" rows="5" placeholder="Mesajınızı yazın" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Göndər</button>
+    </form>
+  </div>
+
+  <div class="contact-info mt-5">
+    <p><strong>Ünvan:</strong> Bakı şəhəri, Nizami küçəsi 45</p>
+    <p><strong>Telefon:</strong> +994 12 345 67 89</p>
+    <p><strong>Email:</strong> info@fitzone.az</p>
+    <p><strong>İş vaxtı:</strong> Hər gün 08:00 - 22:00</p>
+  </div>
+</div>
+{% endblock %}

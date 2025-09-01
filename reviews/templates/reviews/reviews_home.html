@@ -1,0 +1,30 @@
+{% extends 'main/layout.html' %}
+{% load censor %}
+
+{% block title %}
+    Отзывы
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="text-center mb-4">Отзывы наших клиентов</h1>
+
+    {% if reviews %}
+        <div class="row">
+            {% for el in reviews %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ el.user.username }}, {{ el.age }} лет</h5>
+                            <p class="card-text">{{ el.text|censor|truncatechars:120 }}</p>
+                            <a href="{% url 'review_detail' el.id %}" class="btn btn-dark">Читать полностью</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">Отзывов пока нет. Будь первым!</p>
+    {% endif %}
+</div>
+{% endblock content %}

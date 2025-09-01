@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+{% load censor %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">Редактировать отзыв</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a href="{% url 'reviews_home' %}" class="btn btn-secondary">Отмена</a>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,206 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}FitZone Klubu — Xidmətlər{% endblock %}
+
+{% block extra_css %}
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: url("{% static 'main/img/services_bg.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    color: #f1f1f1;
+  }
+
+  /* Затемнение через псевдоэлемент */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+  }
+
+  /* Контент поверх затемнения */
+  .content-wrapper {
+    position: relative;
+    z-index: 1;
+    padding-top: 70px;
+    padding-bottom: 100px;
+  }
+
+  h1, h2, h5, p {
+    color: #f8f9fa;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    transition: transform 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .text-primary {
+    color: #0d6efd !important;
+  }
+
+  .section-title {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .trainer-img {
+    width: 250px;
+    height: 400px;
+    object-fit: cover;  /* сохраняем пропорции и обрезаем лишнее */
+    border-radius: 10px; /* лёгкое скругление, чтобы выглядело аккуратно */
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* Флип-карта */
+  .trainer-card {
+    perspective: 1000px;
+    margin-bottom: 30px;
+  }
+  .trainer-card .front, .trainer-card .back {
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    border-radius: 15px;
+  }
+  .trainer-card .back {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .trainer-card:hover .front {
+    transform: rotateY(180deg);
+  }
+  .trainer-card:hover .back {
+    transform: rotateY(0deg);
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+  <section>
+    <h2 class="section-title">Xidmətlərimiz</h2>
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <div class="p-4 glass-card h-100 shadow-sm text-center">
+          <i class="fas fa-running fa-3x mb-3 text-primary"></i>
+          <h5>Fərdi Təlim</h5>
+          <p>Peşəkar təlimçilərlə fərdi məşqlər — məqsədinizə daha tez çatın!</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 glass-card h-100 shadow-sm text-center">
+          <i class="fas fa-users fa-3x mb-3 text-primary"></i>
+          <h5>Qrup məşqləri</h5>
+          <p>Enerji dolu, motivasiyaedici qrup məşqləri ilə daha əyləncəli idman!</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 glass-card h-100 shadow-sm text-center">
+          <i class="fas fa-hot-tub fa-3x mb-3 text-primary"></i>
+          <h5>SPA və Sauna</h5>
+          <p>Məşqdən sonra bədəninizi istirahətə buraxın — tam rahatlıq üçün.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5 gy-4">
+      <div class="col-md-4">
+        <div class="p-4 glass-card h-100 shadow-sm text-center">
+          <i class="fas fa-apple-alt fa-3x mb-3 text-primary"></i>
+          <h5>Qidalanma Planı</h5>
+          <p>İdeal nəticələr üçün sizə uyğun qidalanma planları hazırlanır.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 glass-card h-100 shadow-sm text-center">
+          <i class="fas fa-child fa-3x mb-3 text-primary"></i>
+          <h5>Uşaqlar üçün Fitness</h5>
+          <p>Balacalar üçün təhlükəsiz və əyləncəli idman proqramları.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 glass-card h-100 shadow-sm text-center">
+          <i class="fas fa-spa fa-3x mb-3 text-primary"></i>
+          <h5>Masaj Xidmətləri</h5>
+          <p>Əzələ gərginliyini azaltmaq və rahatlıq üçün mütəxəssis masajçılar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<section class="mt-5">
+  <h2 class="section-title">Bizim Təlimçilər</h2>
+  <div class="row gy-4">
+    <div class="col-md-4">
+      <div class="trainer-card position-relative">
+        <div class="front glass-card text-center p-4 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1589860518300-9eac95f784d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="trainer-img mb-3">
+          <h5>Aysel Həsənova</h5>
+        </div>
+        <div class="back glass-card text-center p-4 shadow-sm">
+          <p>Fərdi Təlim üzrə Mütəxəssis</p>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Ətraflı</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="trainer-card position-relative">
+        <div class="front glass-card text-center p-4 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1696563996353-214a3690bb11?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="trainer-img mb-3">
+          <h5>Elvin Məmmədov</h5>
+        </div>
+        <div class="back glass-card text-center p-4 shadow-sm">
+          <p>Qrup Məşqləri və Yoga</p>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Ətraflı</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="trainer-card position-relative">
+        <div class="front glass-card text-center p-4 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1679409114331-6aa71b8d4a7a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="trainer-img mb-3">
+          <h5>Kamran Əliyev</h5>
+        </div>
+        <div class="back glass-card text-center p-4 shadow-sm">
+          <p>Qidalanma və Sağlamlıq Məsləhətçisi</p>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Ətraflı</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+{% endblock %}

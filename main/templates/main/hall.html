@@ -1,0 +1,185 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Zal Haqqında{% endblock %}
+
+{% block extra_css %}
+<style>
+  body {
+    background-color: #f3eee6;
+  }
+
+  .hero {
+    position: relative;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    
+    background-size: cover;
+    z-index: 1;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(120deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
+      linear-gradient(120deg, rgba(0, 255, 204, 0.2), rgba(255, 0, 128, 0.2), rgba(0, 128, 255, 0.2));
+    background-size: 300% 300%;
+    animation: gradientMove 15s ease infinite;
+    z-index: 2;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.5s ease-out forwards;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .feature-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+    padding: 1.5rem;
+    position: relative;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: scale(1.02);
+  }
+
+  .feature-card .title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .feature-card .desc {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    color: #ddd;
+  }
+
+  .feature-card .arrow {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+
+  .slogan {
+    margin: 80px auto 40px;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 700px;
+  }
+
+  .text-accent {
+    color: #999;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <h1>FITNESS CLUB</h1>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="fw-bold">3 mərtəbəli zal, hovuzla birlikdə</h2>
+    </div>
+    <div class="col-md-6 text-md-end mt-3 mt-md-0">
+      <p><strong>Yüksək səviyyəli rahatlıq:</strong> hər bir detal peşəkarlıqla düşünülüb.</p>
+    </div>
+  </div>
+
+  <div class="feature-grid mt-4">
+    <div class="feature-card" style="background-image: url('{% static 'main/img/hall1.jpg' %}');">
+      <div class="title">Böyük trenajor zalı</div>
+      <div class="desc">Precor, Hoist və Matrix markalı avadanlıqlar.</div>
+      <div class="arrow">→</div>
+    </div>
+    <div class="feature-card" style="background-image: url('{% static 'main/img/hall2.jpg' %}');">
+      <div class="title">25 metrlik hovuz</div>
+      <div class="desc">İdman və istirahət üçün mükəmməl.</div>
+      <div class="arrow">→</div>
+    </div>
+    <div class="feature-card" style="background-color: #003d3d;">
+      <div class="title">30+ proqram və istiqamət</div>
+      <div class="desc">Fərdi və qrup məşqləri, uyğun yükləmə səviyyəsi.</div>
+      <div class="arrow">→</div>
+    </div>
+    <div class="feature-card" style="background-color: #1a1a1a;">
+      <div class="title">Uşaqlar üçün mərkəz</div>
+      <div class="desc">Təhlükəsiz məşq və inkişaf imkanı.</div>
+      <div class="arrow">→</div>
+    </div>
+    <div class="feature-card" style="background-image: url('{% static 'main/img/hall3.jpg' %}');">
+      <div class="title">Qadınlar üçün zonalar</div>
+      <div class="desc">Sakit, rahat və funksional sahə.</div>
+      <div class="arrow">→</div>
+    </div>
+  </div>
+
+  <div class="slogan">
+    Sağlamlıq aləminə dalın:
+    <span class="text-accent">ideal forma üçün lüks atmosfer</span>
+  </div>
+</section>
+
+
+{% endblock %}

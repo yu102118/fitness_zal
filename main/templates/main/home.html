@@ -1,0 +1,150 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}FitZone Klubu — Ana səhifə{% endblock %}
+
+{% block extra_css %}
+<!-- AOS (Animate On Scroll) CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<style>
+  body {
+    background: url("{% static 'main/img/fitness_welcome.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    color: #f1f1f1;
+    animation: zoomBackground 30s ease-in-out infinite alternate;
+  }
+
+  @keyframes zoomBackground {
+    from {
+      background-size: 100%;
+    }
+    to {
+      background-size: 110%;
+    }
+  }
+
+  .content-wrapper {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-top: 70px;
+    padding-bottom: 100px;
+    animation: fadeIn 2s ease;
+    border-radius: 30px;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
+  h1, h2, h5, p {
+    color: #f8f9fa;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    transition: transform 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .text-primary {
+    color: #0d6efd !important;
+  }
+
+
+  .time-block {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+  }
+  .time-block:hover {
+    transform: translateY(-3px) scale(1.05);
+    cursor: pointer;
+  }
+
+  
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+  <section class="text-center" data-aos="fade-down">
+    <h1 class="mb-3 fw-bold">Xoş gəlmisiniz FitZone Klubuna!</h1>
+    <p class="lead mb-4">Sağlam həyat tərzi və yüksək performans üçün ideal yer.</p>
+  </section>
+
+  <section class="rounded">
+    <h2 class="mb-4 text-center fw-semibold" data-aos="zoom-in">Niyə bizi seçməlisiniz?</h2>
+    <div class="row text-center gy-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="p-4 glass-card h-100 shadow-sm">
+          <i class="fas fa-dumbbell fa-3x mb-3 text-primary"></i>
+          <h5>Peşəkar Təlimçilər</h5>
+          <p>Yüksək ixtisaslı və təcrübəli məşqçilər sizin məqsədləriniz üçün.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="p-4 glass-card h-100 shadow-sm">
+          <i class="fas fa-clock fa-3x mb-3 text-primary"></i>
+          <h5>24/7 Əlçatanlıq</h5>
+          <p>Sizə uyğun vaxtda istənilən zaman məşq edin.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="p-4 glass-card h-100 shadow-sm">
+          <i class="fas fa-heartbeat fa-3x mb-3 text-primary"></i>
+          <h5>Müasir Avadanlıqlar</h5>
+          <p>Ən son texnologiyalı trenajorlar və avadanlıqlar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<ul class="nav nav-tabs" id="weekTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="monday-tab" data-bs-toggle="tab" data-bs-target="#monday">Bazar ertəsi</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="tuesday-tab" data-bs-toggle="tab" data-bs-target="#tuesday">Çərşənbə axşamı</button>
+  </li>
+  <!-- Добавь остальные дни -->
+</ul>
+<div class="tab-content mt-3">
+  <div class="tab-pane fade show active" id="monday">
+    <div class="card glass-card p-3 mb-2">Yoga 08:00-09:00</div>
+    <div class="card glass-card p-3 mb-2">Fərdi Təlim 10:00-11:00</div>
+  </div>
+  <div class="tab-pane fade" id="tuesday">
+    <div class="card glass-card p-3 mb-2">Yoga 08:00-09:00</div>
+    <div class="card glass-card p-3 mb-2">Qrup Məşqləri 16:00-17:00</div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+</script>
+
+
+{% endblock %}

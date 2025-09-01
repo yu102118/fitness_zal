@@ -1,0 +1,66 @@
+
+aside {
+    float: left;
+    background: #999999; 
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #ede4e4;
+}
+
+/* Стили для ссылок в боковом меню */
+aside ul a {
+    color: #ffffff; /* Белый цвет текста */
+    text-decoration: none; /* Убирает подчеркивание */
+    font-weight: bold; /* Жирный текст */
+}
+
+/* Цвет ссылок при наведении */
+aside ul a:hover {
+    color: #ffffff; /* Красный цвет при наведении */
+}
+
+
+/* Убираем белый фон у списка */
+.list-group-item {
+    background: transparent; /* Прозрачный фон */
+    color: #ffffff; /* Белый текст */
+    border: none; /* Убираем рамки */
+    transition: all 0.6s ease;
+}
+
+aside .logo{
+    font-size: 40px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+    top: 15px;
+}
+
+
+
+.list-group-item:hover {
+    color: #00aaff; /* Цвет текста при наведении */
+    font-size: 1.1rem; /* Увеличиваем размер текста */
+    background-color: #d3c8c8; /* Темнее фон при наведении */
+}
+
+
+main .features h1 {font-size: 50px;}
+main .features p {max-width: 400px; margin: 20px auto}
+
+form {
+    margin-left: 32%;
+    width: 500px;
+    margin-top: 50px;
+}
+
+.alert-warning {
+    float: left;
+    clear: both;
+    width: 400px;
+    margin: 20px 34%;
+    text-align: left;
+}
+
